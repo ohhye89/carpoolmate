@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00b050"
+    android:orientation="vertical" >
+
+    <ImageView 
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/carpoolmate_logo"
+        android:id="@+id/login_image_logo"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/login_image_logo" />
+    
+    <TextView
+        android:id="@+id/login_txt_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_image_logo"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_gravity="left"
+        android:text="@string/login_txt_id"
+        android:layout_marginLeft="20dp" />
+
+    <EditText
+        android:id="@+id/login_edittxt_id"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_below="@+id/login_txt_id"
+        android:hint="@string/login_edittxt_id"
+        android:layout_marginLeft="20dp"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/login_txt_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/login_edittxt_id"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="left"
+        android:text="@string/login_txt_password"
+        android:layout_marginLeft="20dp" />
+
+    <EditText
+        android:id="@+id/login_edittxt_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/login_txt_password"
+        android:hint="@string/login_edittxt_password"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:inputType="textPassword"
+        android:layout_marginLeft="20dp" />
+    
+    <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_edittxt_password"
+        android:layout_marginTop="40dp" 
+        android:layout_centerHorizontal="true">
+        
+	    <Button 
+	        android:layout_weight="1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/login_btn_login"
+	        android:text="@string/login_btn_login" />
+	    
+	    <Button
+	        android:layout_weight="1" 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/login_btn_find"
+	        android:text="@string/login_btn_find" />
+    </LinearLayout>
+
+</RelativeLayout>
