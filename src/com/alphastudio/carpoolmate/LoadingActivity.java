@@ -13,7 +13,7 @@ public class LoadingActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loading);
+        setContentView(R.layout.activity_loading); 
         
         Handler h = new Handler() {
         	public void handleMessage(Message msg) {

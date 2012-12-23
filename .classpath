@@ -47,5 +47,6 @@
 	<classpathentry kind="lib" path="libs/gdata-webmastertools-meta-2.0.jar"/>
 	<classpathentry kind="lib" path="libs/gdata-youtube-2.0.jar"/>
 	<classpathentry kind="lib" path="libs/gdata-youtube-meta-2.0.jar"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
