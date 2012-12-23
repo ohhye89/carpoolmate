@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     
-    <string name="login_txt_id">Google ID</string>
+    <string name="login_txt_id">Google Email</string>
     <string name="login_edittxt_id">아이디를 입력하세요</string>
     <string name="login_txt_password">Password</string>
     <string name="login_edittxt_password">비밀번호를 입력하세요</string>
