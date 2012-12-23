@@ -7,8 +7,8 @@
     android:orientation="vertical" >
 
     <ImageView 
-        android:layout_width="300dp"
-        android:layout_height="250dp"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/carpoolmate_logo"
         android:id="@+id/login_image_logo"
@@ -55,17 +55,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/login_edittxt_id"
         android:layout_below="@+id/login_txt_password"
+        android:layout_marginLeft="20dp"
         android:hint="@string/login_edittxt_password"
-        android:textAppearance="?android:attr/textAppearanceSmall"
         android:inputType="textPassword"
-        android:layout_marginLeft="20dp" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
     
     <LinearLayout 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_edittxt_password"
-        android:layout_marginTop="40dp" 
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true">
         
 	    <Button 

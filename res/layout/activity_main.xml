@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00b050" >
-    
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -56,17 +56,18 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:orientation="vertical" >
-                
+
                 <TextView
                     android:id="@+id/main_history_txtview_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/main_history_txtview_name"
                     android:textColor="@android:color/white"
-                    android:textSize="30sp"
-                    android:text="@string/main_history_txtview_name" />
-                <TextView 
+                    android:textSize="30sp" />
+
+                <TextView
                     android:id="@+id/main_history_txtview_nameview"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -74,32 +75,35 @@
                     android:layout_toRightOf="@+id/main_history_txtview_nameview"
                     android:textColor="@android:color/white"
                     android:textSize="30sp" />
+
                 <TextView
                     android:id="@+id/main_history_txtview_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/main_history_txtview_name"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/main_history_txtview_count"
                     android:textColor="@android:color/white"
-                    android:textSize="30sp"
-                    android:text="@string/main_history_txtview_count" />
-                <TextView 
+                    android:textSize="30sp" />
+
+                <TextView
                     android:id="@+id/main_history_txtview_countview"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/main_history_txtview_name"
-                    android:layout_toRightOf="@+id/main_history_txtview_countview"
                     android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/main_history_txtview_countview"
                     android:textColor="@android:color/white"
                     android:textSize="30sp" />
+
                 <Button
                     android:id="@+id/main_history_btn_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/main_history_txtview_count"
-                    android:layout_marginTop="50dp"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"
                     android:text="@string/main_history_btn_detail" />
             </RelativeLayout>
         </FrameLayout>
