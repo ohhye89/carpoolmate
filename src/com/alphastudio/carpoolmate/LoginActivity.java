@@ -1,8 +1,13 @@
 package com.alphastudio.carpoolmate;
 
+import java.io.IOException;
+
+import com.google.gdata.util.ServiceException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -23,7 +28,24 @@ public class LoginActivity extends Activity implements OnClickListener {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_login);
 	    
-	    startActivity(new Intent(this, LoadingActivity.class));
+	    new AsyncTask<Void, Void, Void>() {
+
+			@Override
+			protected Void doInBackground(Void... params) {
+				try {
+					new SpreadSheetManager().spreadSheetTest();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (ServiceException e) {
+					e.printStackTrace();
+				}
+				return null;
+			}
+	    	
+		}.execute();
+	    
+	    
+//	    startActivity(new Intent(this, LoadingActivity.class));
 	    
 	    idEditTxt = (EditText)findViewById(R.id.login_edittxt_id);
 	    passwordEditTxt = (EditText)findViewById(R.id.login_edittxt_password);
