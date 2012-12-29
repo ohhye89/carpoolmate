@@ -31,11 +31,11 @@ public final class R {
         public static final int main_checkin_btn_send=0x7f08000b;
         public static final int main_checkin_txtview_name=0x7f08000a;
         public static final int main_chekckin_txtview_date=0x7f080009;
-        public static final int main_history_btn_detail=0x7f080011;
-        public static final int main_history_txtview_count=0x7f08000f;
-        public static final int main_history_txtview_countview=0x7f080010;
+        public static final int main_history_btn_detail=0x7f080010;
+        public static final int main_history_prg_loading=0x7f080011;
+        public static final int main_history_txtview_count=0x7f08000e;
         public static final int main_history_txtview_name=0x7f08000d;
-        public static final int main_history_txtview_nameview=0x7f08000e;
+        public static final int main_history_txtview_total=0x7f08000f;
         public static final int main_tap_checkin=0x7f080008;
         public static final int main_tap_history=0x7f08000c;
         public static final int menu_settings=0x7f080012;
@@ -49,6 +49,7 @@ public final class R {
         public static final int activity_loading=0x7f070000;
     }
     public static final class string {
+        public static final int LoadingSuccess=0x7f05000e;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050001;
         public static final int login_btn_find=0x7f050008;

@@ -18,5 +18,6 @@
     <string name="main_history_txtview_name">이 름 : </string>
     <string name="main_history_txtview_count">횟 수 : </string>
     <string name="main_history_btn_detail">자세히 보기</string>
+    <string name="LoadingSuccess">로딩 완료</string>
 
 </resources>
