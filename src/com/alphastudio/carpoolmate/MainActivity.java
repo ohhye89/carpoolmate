@@ -228,7 +228,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		    ListEntry row = listFeed.getEntries().get(28);
 		    String currentCountString = row.getCustomElements().getValue(USERONE);
 		    int currentCountInt = Integer.parseInt(currentCountString);
-		    String setCount = String.valueOf(currentCountInt);
+		    String setCount = String.valueOf(currentCountInt+1);
     		row.getCustomElements().setValueLocal(USERONE, setCount);
 		    row.update();
 		}
