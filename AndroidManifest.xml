@@ -34,6 +34,8 @@
         <activity 
 			android:name="com.alphastudio.carpoolmate.MainActivity" >
         </activity>
+        <activity android:name="CheckInActivity"></activity>
+        <activity android:name="HistoryActivity"></activity>
         
     </application>
 
