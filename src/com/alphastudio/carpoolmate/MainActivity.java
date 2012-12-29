@@ -172,12 +172,12 @@ public class MainActivity extends TabActivity implements OnClickListener {
 			}).create().show();
 			
 			break;
+			
 		case R.id.main_history_btn_detail :
 			intent = new Intent(Intent.ACTION_VIEW);
 			intent.setData(Uri.parse("https://docs.google.com/spreadsheet/ccc?key=0AhAUXFpCrNTedGYyS3FVV0ZhY1NYRGNPWVllNF9FbHc#gid=0"));
 			startActivity(intent);
 			break;
-
 		}
 	}
 	
@@ -227,13 +227,8 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		    
 		    // За
 		    ListEntry row = listFeed.getEntries().get(28);
-		    for (String tag : row.getCustomElements().getTags()) {
-		    	if(tag==USERONE) {
-		    		String temp = row.getCustomElements().getValue(tag);
-		    		row.getCustomElements().setValueLocal(tag, temp+1);
-		    		break;
-		    	}
-		    }
+		    String temp = row.getCustomElements().getValue(USERONE);
+    		row.getCustomElements().setValueLocal(USERONE, temp+1);
 		    row.update();
 		}
 	}
