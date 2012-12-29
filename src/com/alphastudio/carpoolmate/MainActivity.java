@@ -13,7 +13,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -227,8 +226,10 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		    
 		    // За
 		    ListEntry row = listFeed.getEntries().get(28);
-		    String temp = row.getCustomElements().getValue(USERONE);
-    		row.getCustomElements().setValueLocal(USERONE, temp+1);
+		    String currentCountString = row.getCustomElements().getValue(USERONE);
+		    int currentCountInt = Integer.parseInt(currentCountString);
+		    String setCount = String.valueOf(currentCountInt);
+    		row.getCustomElements().setValueLocal(USERONE, setCount);
 		    row.update();
 		}
 	}
