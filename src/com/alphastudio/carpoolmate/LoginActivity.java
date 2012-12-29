@@ -16,7 +16,6 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private Button loginBtn;
 	private Button findBtn;
 	private Intent intent;
-	final static int GET_ID = 0;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -45,6 +44,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		switch(v.getId())
 		{
 		case R.id.login_btn_login :
+			GoogleID.setID(idEditTxt.getText().toString());
 			intent = new Intent(LoginActivity.this, MainActivity.class);
 			startActivity(intent);
 			overridePendingTransition(R.anim.fade, R.anim.hold);

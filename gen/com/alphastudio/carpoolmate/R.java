@@ -20,24 +20,25 @@ public final class R {
         public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f080009;
+        public static final int RelativeLayout1=0x7f08000a;
         public static final int checkin_btn_send=0x7f080002;
         public static final int checkin_txtview_name=0x7f080001;
         public static final int chekckin_txtview_date=0x7f080000;
-        public static final int history_btn_detail=0x7f080006;
-        public static final int history_prg_loading=0x7f080007;
-        public static final int history_txtview_count=0x7f080004;
-        public static final int history_txtview_name=0x7f080003;
-        public static final int history_txtview_total=0x7f080005;
-        public static final int login_btn_find=0x7f08000f;
-        public static final int login_btn_login=0x7f08000e;
-        public static final int login_edittxt_id=0x7f08000b;
-        public static final int login_edittxt_password=0x7f08000d;
-        public static final int login_image_logo=0x7f080008;
-        public static final int login_txt_id=0x7f08000a;
-        public static final int login_txt_password=0x7f08000c;
-        public static final int menu_settings=0x7f080011;
-        public static final int tabhost=0x7f080010;
+        public static final int history_btn_detail=0x7f080007;
+        public static final int history_prg_loading=0x7f080008;
+        public static final int history_txtview_count=0x7f080005;
+        public static final int history_txtview_month=0x7f080003;
+        public static final int history_txtview_name=0x7f080004;
+        public static final int history_txtview_total=0x7f080006;
+        public static final int login_btn_find=0x7f080010;
+        public static final int login_btn_login=0x7f08000f;
+        public static final int login_edittxt_id=0x7f08000c;
+        public static final int login_edittxt_password=0x7f08000e;
+        public static final int login_image_logo=0x7f080009;
+        public static final int login_txt_id=0x7f08000b;
+        public static final int login_txt_password=0x7f08000d;
+        public static final int menu_settings=0x7f080012;
+        public static final int tabhost=0x7f080011;
     }
     public static final class layout {
         public static final int activity_checkin=0x7f030000;
