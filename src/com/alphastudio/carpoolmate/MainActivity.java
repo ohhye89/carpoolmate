@@ -1,6 +1,7 @@
 package com.alphastudio.carpoolmate;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.List;
@@ -44,6 +45,8 @@ public class MainActivity extends TabActivity implements OnClickListener {
 	private Button detailBtn;
 	private Intent intent;
 
+	Calendar cal = Calendar.getInstance();
+	
 	private String historyName;
 	private String historyCount;
 	private String historyTotal;
@@ -51,6 +54,8 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 	String USERNAME = "ohej92@gmail.com";
 	String PASSWORD = "carpoolmate";
+	
+	String USERONE = "jaehoonlee1010";
 
 
 	@Override
@@ -74,7 +79,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		progress = (ProgressBar)findViewById(R.id.main_history_prg_loading);
 
 		StringBuilder sb = new StringBuilder();
-		Calendar cal = Calendar.getInstance();
+		
 
 		sb.append("기분 좋은 하루 *^^* \n")
 		.append("오늘은 ")
@@ -154,6 +159,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 			.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
+					new SendToGooleDocs();
 					Toast.makeText(MainActivity.this, "전송되었습니다.", 
 							Toast.LENGTH_SHORT).show();
 				}
@@ -165,6 +171,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 							Toast.LENGTH_SHORT).show();						
 				}
 			}).create().show();
+			
 			break;
 		case R.id.main_history_btn_detail :
 			intent = new Intent(Intent.ACTION_VIEW);
@@ -174,7 +181,61 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 		}
 	}
-
+	
+	private class SendToGooleDocs extends AsyncTask<Void, Void, Void>{
+		
+		@Override
+		protected Void doInBackground(Void... params) {
+			try {
+				send();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ServiceException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+		
+		public void send() throws AuthenticationException, MalformedURLException, IOException, ServiceException {
+			SpreadsheetService service = new SpreadsheetService("MySpreadsheetIntegration-v1");
+			service.setUserCredentials(USERNAME, PASSWORD);
+			// 요청 URL정의. 바뀌지 않는다.
+			URL SPREADSHEET_FEED_URL = new URL("https://spreadsheets.google.com/feeds/spreadsheets/private/full");
+			// Make a request to the API and get all spreadsheets.
+			SpreadsheetFeed feed = service.getFeed(SPREADSHEET_FEED_URL, SpreadsheetFeed.class);
+			List<SpreadsheetEntry> spreadsheets = feed.getEntries();
+			if (spreadsheets.size() == 0) {      
+				// TODO: There were no spreadsheets, act accordingly.
+			}
+			
+			// 0번 인덱스 spreadsheet 출력
+			SpreadsheetEntry mySpreadsheet = spreadsheets.get(0);			
+			
+			// Make a request to the API to fetch information about all worksheets in the spreadsheet.
+			List<WorksheetEntry> worksheets = mySpreadsheet.getWorksheets();
+			
+			// 0번 인덱스 worksheet Title 출력
+			WorksheetEntry myWorksheet = worksheets.get(0);
+			
+			WorksheetFeed worksheetFeed = service.getFeed(mySpreadsheet.getWorksheetFeedUrl(), WorksheetFeed.class);
+		   
+			URL listFeedUrl = myWorksheet.getListFeedUrl();
+		    ListFeed listFeed = service.getFeed(listFeedUrl, ListFeed.class);
+		    
+		    // 행
+		    ListEntry row = listFeed.getEntries().get( cal.get(Calendar.DATE)-1 );
+		    for (String tag : row.getCustomElements().getTags()) {
+		    	if(tag==USERONE) {
+		    		String temp = row.getCustomElements().getValue(tag);
+		    		Log.e("temp", "temp");
+		    		row.getCustomElements().setValueLocal(tag, temp+1);
+		    		break;
+		    	}
+		    }
+		    row.update();
+		}
+	}
+	
 	public void spreadSheetTest() throws IOException, ServiceException{
 		SpreadsheetService service = auth();
 		int i = 1;
