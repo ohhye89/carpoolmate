@@ -45,8 +45,6 @@ public class MainActivity extends TabActivity implements OnClickListener {
 	private Button detailBtn;
 	private Intent intent;
 
-	Calendar cal = Calendar.getInstance();
-	
 	private String historyName;
 	private String historyCount;
 	private String historyTotal;
@@ -78,9 +76,10 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		mainHistoryViewTxtTotal = (TextView)findViewById(R.id.main_history_txtview_total);
 		progress = (ProgressBar)findViewById(R.id.main_history_prg_loading);
 
-		StringBuilder sb = new StringBuilder();
 		
-
+		StringBuilder sb = new StringBuilder();
+		Calendar cal = Calendar.getInstance();
+		
 		sb.append("기분 좋은 하루 *^^* \n")
 		.append("오늘은 ")
 		.append(cal.get(Calendar.MONTH)+1)
@@ -92,14 +91,14 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		String name = "이재훈/오혜성";
 		StringBuilder sbName = new StringBuilder();
 		sbName.append("\""+name+"\"님 같이 타시렵니까?");
-		mainCheckinEditTxtName.setText(sbName.toString());
-
+		// mainCheckinEditTxtName.setText(sbName.toString());
+		
 		sendBtn = (Button)findViewById(R.id.main_checkin_btn_send);
 		detailBtn = (Button)findViewById(R.id.main_history_btn_detail);
 
 		sendBtn.setOnClickListener(this);
 		detailBtn.setOnClickListener(this);
-
+		
 		new AsyncTask<Void, Integer, Void>() {
 
 			@Override
@@ -159,7 +158,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 			.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					new SendToGooleDocs();
+					new SendToGooleDocs().execute();
 					Toast.makeText(MainActivity.this, "전송되었습니다.", 
 							Toast.LENGTH_SHORT).show();
 				}
@@ -196,6 +195,12 @@ public class MainActivity extends TabActivity implements OnClickListener {
 			return null;
 		}
 		
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			mainCheckinEditTxtName.setText("됬냐?");
+		}
+
 		public void send() throws AuthenticationException, MalformedURLException, IOException, ServiceException {
 			SpreadsheetService service = new SpreadsheetService("MySpreadsheetIntegration-v1");
 			service.setUserCredentials(USERNAME, PASSWORD);
@@ -216,18 +221,15 @@ public class MainActivity extends TabActivity implements OnClickListener {
 			
 			// 0번 인덱스 worksheet Title 출력
 			WorksheetEntry myWorksheet = worksheets.get(0);
-			
-			WorksheetFeed worksheetFeed = service.getFeed(mySpreadsheet.getWorksheetFeedUrl(), WorksheetFeed.class);
 		   
 			URL listFeedUrl = myWorksheet.getListFeedUrl();
 		    ListFeed listFeed = service.getFeed(listFeedUrl, ListFeed.class);
 		    
 		    // 행
-		    ListEntry row = listFeed.getEntries().get( cal.get(Calendar.DATE)-1 );
+		    ListEntry row = listFeed.getEntries().get(28);
 		    for (String tag : row.getCustomElements().getTags()) {
 		    	if(tag==USERONE) {
 		    		String temp = row.getCustomElements().getValue(tag);
-		    		Log.e("temp", "temp");
 		    		row.getCustomElements().setValueLocal(tag, temp+1);
 		    		break;
 		    	}
