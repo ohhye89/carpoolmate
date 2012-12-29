@@ -9,13 +9,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 
-public class LoginActivity extends Activity implements OnClickListener {
+public class LoginActivity extends Activity implements OnClickListener, RadioGroup.OnCheckedChangeListener {
+
 	private EditText idEditTxt;
 	private EditText passwordEditTxt;
 	private Button loginBtn;
 	private Button findBtn;
 	private Intent intent;
+	private Boolean isMate = true;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	    passwordEditTxt = (EditText)findViewById(R.id.login_edittxt_password);
 	    loginBtn = (Button)findViewById(R.id.login_btn_login);
 	    findBtn = (Button)findViewById(R.id.login_btn_find);
+
 	    loginBtn.setOnClickListener(this);
 	    findBtn.setOnClickListener(this);
 	}
@@ -45,9 +49,16 @@ public class LoginActivity extends Activity implements OnClickListener {
 		{
 		case R.id.login_btn_login :
 			GoogleID.setID(idEditTxt.getText().toString());
-			intent = new Intent(LoginActivity.this, MainActivity.class);
-			startActivity(intent);
-			overridePendingTransition(R.anim.fade, R.anim.hold);
+			if(isMate) {
+				intent = new Intent(LoginActivity.this, MainActivity.class);
+				startActivity(intent);
+				overridePendingTransition(R.anim.fade, R.anim.hold);
+			}
+			else {
+				intent = new Intent(LoginActivity.this, MainCarActivity.class);
+				startActivity(intent);
+				overridePendingTransition(R.anim.fade, R.anim.hold);
+			}
 
 		    idEditTxt.setText("");
 		    passwordEditTxt.setText("");
@@ -60,5 +71,17 @@ public class LoginActivity extends Activity implements OnClickListener {
 		}
 	}
 
-	
+	@Override
+	public void onCheckedChanged(RadioGroup group, int checkedId) {
+		switch(checkedId) {
+		case R.id.login_radiobtn_car :
+			isMate = false;
+			break;
+			
+		case R.id.login_radiobtn_mate :
+			isMate = true;
+			break;
+		}
+	}
+
 }
