@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -48,8 +49,8 @@ public class MainActivity extends TabActivity implements OnClickListener {
 	private String historyTotal;
 	final static int GET_ID = 0;
 
-	String USERNAME = "ohhye89@gmail.com";
-	String PASSWORD = "0gpftldzl";
+	String USERNAME = "ohej92@gmail.com";
+	String PASSWORD = "carpoolmate";
 
 
 	@Override
@@ -90,7 +91,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 		sendBtn = (Button)findViewById(R.id.main_checkin_btn_send);
 		detailBtn = (Button)findViewById(R.id.main_history_btn_detail);
-		
+
 		sendBtn.setOnClickListener(this);
 		detailBtn.setOnClickListener(this);
 
@@ -98,7 +99,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 			@Override
 			protected void onPreExecute(){
-//				publishProgress(0);
+				//				publishProgress(0);
 			}
 
 			protected Void doInBackground(Void... params) {
@@ -109,32 +110,33 @@ public class MainActivity extends TabActivity implements OnClickListener {
 				} catch (ServiceException e) {
 					e.printStackTrace();
 				}
-				
-				for(int i = 1; i <= 10 ; i++) {
 
-					try {
-						publishProgress(i);
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				
+				//				for(int i = 1; i <= 10 ; i++) {
+				//
+				//					try {
+				//						publishProgress(i);
+				//						Thread.sleep(100);
+				//					} catch (InterruptedException e) {
+				//						// TODO Auto-generated catch block
+				//						e.printStackTrace();
+				//					}
+				//				}
+
 				return null;
 			}
 
 			protected void onProgressUpdate(Integer... progressing){
-//				progress.setProgress(progressing[0]);
+				//				progress.setProgress(progressing[0]);
 			}
-			
+
 			protected void onPostExecute(Void result) {
 				// TODO Auto-generated method stub
 				super.onPostExecute(result);
 				Toast.makeText(MainActivity.this, R.string.LoadingSuccess, Toast.LENGTH_LONG).show();
 				progress.setVisibility(View.INVISIBLE);
-				
-				mainHistoryViewTxtName.setText(historyName.toString() + "´Ô !!");
+
+//				mainHistoryViewTxtName.setText(historyName.toString() + "´Ô !!");
+				mainHistoryViewTxtName.setText(USERNAME +"´Ô!!");
 				mainHistoryViewTxtCount.setText(historyCount.toString() + "È¸ ÀÌ¿ë ÇÏ¼Ì±â ¶§¹®¿¡,");
 				mainHistoryViewTxtTotal.setText("ÃÑ " + historyTotal.toString() + "¿ø ³³ºÎ¿ä¸Á");
 			}
@@ -166,7 +168,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 			break;
 		case R.id.main_history_btn_detail :
 			intent = new Intent(Intent.ACTION_VIEW);
-			intent.setData(Uri.parse("https://docs.google.com/spreadsheet/ccc?key=0Ao8BZGIWIAvMdGZtc2VWd2w3RDM4emVSc3lFUTBTbEE#gid=0"));
+			intent.setData(Uri.parse("https://docs.google.com/spreadsheet/ccc?key=0AhAUXFpCrNTedGYyS3FVV0ZhY1NYRGNPWVllNF9FbHc#gid=0"));
 			startActivity(intent);
 			break;
 
@@ -208,21 +210,25 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		ListFeed listFeed = service.getFeed(listFeedUrl, ListFeed.class);
 
 		// Iterate through each row, printing its cell values.
-
+		
 		for (ListEntry row : listFeed.getEntries()){
-			if(j == 1){
+			if(j == 32){
 				for (String tag : row.getCustomElements().getTags()) {
-					if(i == 1)
-						historyName = row.getCustomElements().getValue(tag).toString();
-					if(i == 6)
+					if(i == 2)
 						historyCount = row.getCustomElements().getValue(tag).toString();
-					if(i == 7)
+					i++;
+				}
+				i = 1;
+			}
+			if(j == 33){
+				for (String tag : row.getCustomElements().getTags()) {
+					if(i == 2)
 						historyTotal = row.getCustomElements().getValue(tag).toString();
 					i++;
 				}
+				i = 1;
 			}
 			j++;
-			i = 1;
 		}
 
 	}
