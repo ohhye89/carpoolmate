@@ -33,6 +33,7 @@ public final class R {
         public static final int history_txtview_month=0x7f080003;
         public static final int history_txtview_name=0x7f080004;
         public static final int history_txtview_total=0x7f080006;
+        public static final int listView=0x7f080017;
         public static final int login_btn_find=0x7f080014;
         public static final int login_btn_login=0x7f080013;
         public static final int login_edittxt_id=0x7f080010;
@@ -43,11 +44,9 @@ public final class R {
         public static final int login_radiogroup=0x7f08000c;
         public static final int login_txt_id=0x7f08000f;
         public static final int login_txt_password=0x7f080011;
-        public static final int marincar_txtView_amount=0x7f080019;
-        public static final int marincar_txtView_count=0x7f080018;
-        public static final int marincar_txtView_name=0x7f080017;
-        public static final int marincar_txtView_num=0x7f080016;
-        public static final int menu_settings=0x7f08001a;
+        public static final int maincar_prg_loading=0x7f080018;
+        public static final int maincar_txtview_month=0x7f080016;
+        public static final int menu_settings=0x7f080019;
         public static final int tabhost=0x7f080015;
     }
     public static final class layout {
@@ -79,10 +78,6 @@ public final class R {
         public static final int login_radiobtn_mate=0x7f050004;
         public static final int login_txt_id=0x7f050005;
         public static final int login_txt_password=0x7f050007;
-        public static final int maincar_txtView_amount=0x7f050015;
-        public static final int maincar_txtView_count=0x7f050014;
-        public static final int maincar_txtView_name=0x7f050013;
-        public static final int maincar_txtView_num=0x7f050012;
         public static final int menu_settings=0x7f050002;
     }
     public static final class style {

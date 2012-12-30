@@ -22,11 +22,5 @@
     <string name="history_btn_detail">자세히 보기</string>
     <string name="LoadingSuccess">로딩 완료</string>
     <string name="history_btn_reset">갱신 하기</string>
-    
-    <string name="maincar_txtView_num">번 호</string>
-    <string name="maincar_txtView_name">UserID</string>
-    <string name="maincar_txtView_count">이용 횟수</string>
-    <string name="maincar_txtView_amount">이용 금액</string>
-    
-
+ 
 </resources>
