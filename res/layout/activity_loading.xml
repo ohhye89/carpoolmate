@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00b050"
+    android:background="#558ED5"
     tools:context=".LoadingActivity" >
 
     <ImageView 
@@ -10,8 +10,8 @@
         android:layout_height="250dp"
         android:src="@drawable/carpoolmate_logo"
         android:id="@+id/login_image_logo"
-        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:contentDescription="@string/login_image_logo" />
         
 
