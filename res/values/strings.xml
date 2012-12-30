@@ -15,7 +15,7 @@
     <string name="login_btn_find">ID 찾기</string>
     <string name="login_image_logo">로고</string>
     
-    <string name="checkin_btn_send">전송하기</string>
+    <string name="checkin_btn_send">탑승</string>
     
     <string name="history_txtview_name">이 름 : </string>
     <string name="history_txtview_count">횟 수 : </string>

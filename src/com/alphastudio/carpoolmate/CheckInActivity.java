@@ -9,6 +9,7 @@ import java.util.List;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +32,9 @@ public class CheckInActivity extends Activity implements OnClickListener {
 	private TextView checkInTxtViewDate;
 	private TextView checkInTxtViewName;
 	private Button sendBtn;
+	
+	private SharedPreferences nickName;
+	private SharedPreferences.Editor nickEditor;
 		
 	String MAINUSER = "ohej92@gmail.com";
 	String PASSWORD = "carpoolmate";
@@ -45,6 +49,9 @@ public class CheckInActivity extends Activity implements OnClickListener {
 	    checkInTxtViewDate = (TextView)findViewById(R.id.chekckin_txtview_date);
 	    checkInTxtViewName = (TextView)findViewById(R.id.checkin_txtview_name);
 	    sendBtn = (Button)findViewById(R.id.checkin_btn_send);
+	    
+	    nickName = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+	    nickEditor = nickName.edit();
 	    
 	    sendBtn.setOnClickListener(this);
 	    
@@ -65,28 +72,28 @@ public class CheckInActivity extends Activity implements OnClickListener {
 		{
 		case R.id.checkin_btn_send :
 			new AlertDialog.Builder(this)
-			.setTitle("전송")
-			.setMessage("전송하시겠습니까?")
-			.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			.setTitle("탑승")
+			.setMessage("탑승하시겠습니까?")
+			.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					Calendar cal = Calendar.getInstance();
 					StringBuilder sb = new StringBuilder();
-					sb.append("CarPool Time...\n")
+					sb.append("탑승시간은..\n")
 					  .append(cal.get(Calendar.HOUR))
 					  .append("시 ")
 					  .append(cal.get(Calendar.MINUTE))
-					  .append("분 ");
+					  .append("분 입니다.");
 					checkInTxtViewName.setText("");
 					checkInTxtViewName.setText(sb.toString());
 					
 					new SendToGooleDocs().execute();
 					
-					Toast.makeText(CheckInActivity.this, "전송되었습니다.", 
+					Toast.makeText(CheckInActivity.this, "탑승처리 되었습니다.", 
 							Toast.LENGTH_SHORT).show();
 				}
 			})
-			.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			.setNegativeButton("NO", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					Toast.makeText(CheckInActivity.this, "취소되었습니다.", 
@@ -118,6 +125,7 @@ private class SendToGooleDocs extends AsyncTask<Void, Void, Void>{
 		}
 
 		public void send() throws AuthenticationException, MalformedURLException, IOException, ServiceException {
+			String nick = nickName.getString("value", "");
 			SpreadsheetService service = new SpreadsheetService("MySpreadsheetIntegration-v1");
 			service.setUserCredentials(MAINUSER, PASSWORD);
 			// Request URL Define. Never Change.
@@ -143,10 +151,10 @@ private class SendToGooleDocs extends AsyncTask<Void, Void, Void>{
 		    
 		    // 
 		    ListEntry row = listFeed.getEntries().get( cal.get(Calendar.DATE)-1 );
-		    String currentCountString = row.getCustomElements().getValue( GoogleID.getID() );
+		    String currentCountString = row.getCustomElements().getValue( nick );
 		    int currentCountInt = Integer.parseInt(currentCountString);
 		    String setCount = String.valueOf(currentCountInt+1);
-    		row.getCustomElements().setValueLocal( GoogleID.getID(), setCount );
+    		row.getCustomElements().setValueLocal( nick, setCount );
 		    row.update();
 		}
 	}
