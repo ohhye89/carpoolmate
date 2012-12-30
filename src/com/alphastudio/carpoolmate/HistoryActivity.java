@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -34,6 +35,7 @@ public class HistoryActivity extends Activity implements OnClickListener {
 	private TextView historyTxtViewAmount;
 	private ProgressBar progress;
 	private Button detailBtn;
+	private Button resetBtn;
 	private Intent intent;
 	
 	private String historyCount = "";
@@ -55,8 +57,10 @@ public class HistoryActivity extends Activity implements OnClickListener {
 	    historyTxtViewAmount = (TextView)findViewById(R.id.history_txtview_total);
 		progress = (ProgressBar)findViewById(R.id.history_prg_loading);
 		detailBtn = (Button)findViewById(R.id.history_btn_detail);
+		resetBtn = (Button)findViewById(R.id.history_btn_reset);
 		
 		detailBtn.setOnClickListener(this);
+		resetBtn.setOnClickListener(this);
 		
 		new AsyncTask<Void, Integer, Void>() {
 
@@ -87,6 +91,10 @@ public class HistoryActivity extends Activity implements OnClickListener {
 			}
 		}.execute();
 	}
+	
+//	public void onStart(){
+//		Log.e("Ohhye","onStart()");
+//	}
 
 	@Override
 	public void onClick(View v) {
@@ -97,8 +105,15 @@ public class HistoryActivity extends Activity implements OnClickListener {
 			intent.setData(Uri.parse("https://docs.google.com/spreadsheet/ccc?key=0AhAUXFpCrNTedGYyS3FVV0ZhY1NYRGNPWVllNF9FbHc#gid=0"));
 			startActivity(intent);
 			break;
+		case R.id.history_btn_reset :
+//			onPause();
+			break;
 		}
 	}
+	
+//	public void onPause(){
+//		Log.e("Ohhye","onPause()");
+//	}
 	
 	public void detailViewGoogleDocs() throws AuthenticationException, MalformedURLException, IOException, ServiceException {
 
