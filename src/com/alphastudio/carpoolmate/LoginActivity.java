@@ -9,10 +9,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 public class LoginActivity extends Activity implements OnClickListener, RadioGroup.OnCheckedChangeListener {
 
+	private RadioGroup radioBtnGroup;
+	private RadioButton radioBtnCar;
+	private RadioButton radioBtnMate;
 	private EditText idEditTxt;
 	private EditText passwordEditTxt;
 	private Button loginBtn;
@@ -26,11 +30,15 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 	    setContentView(R.layout.activity_login);
 //	    startActivity(new Intent(this, LoadingActivity.class));
 	    
+	    radioBtnGroup = (RadioGroup)findViewById(R.id.login_radiogroup);
+	    radioBtnCar = (RadioButton)findViewById(R.id.login_radiobtn_car);
+	    radioBtnMate = (RadioButton)findViewById(R.id.login_radiobtn_mate);
 	    idEditTxt = (EditText)findViewById(R.id.login_edittxt_id);
 	    passwordEditTxt = (EditText)findViewById(R.id.login_edittxt_password);
 	    loginBtn = (Button)findViewById(R.id.login_btn_login);
 	    findBtn = (Button)findViewById(R.id.login_btn_find);
-
+	    
+	    radioBtnGroup.setOnCheckedChangeListener(this);
 	    loginBtn.setOnClickListener(this);
 	    findBtn.setOnClickListener(this);
 	}
