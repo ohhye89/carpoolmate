@@ -34,6 +34,7 @@ public class HistoryActivity extends Activity implements OnClickListener {
 	private TextView historyTxtViewAmount;
 	private ProgressBar progress;
 	private Button detailBtn;
+	private Button resetBtn;
 	private Intent intent;
 	
 	private String historyCount = "";
@@ -55,8 +56,10 @@ public class HistoryActivity extends Activity implements OnClickListener {
 	    historyTxtViewAmount = (TextView)findViewById(R.id.history_txtview_total);
 		progress = (ProgressBar)findViewById(R.id.history_prg_loading);
 		detailBtn = (Button)findViewById(R.id.history_btn_detail);
+		resetBtn = (Button)findViewById(R.id.history_btn_reset);
 		
 		detailBtn.setOnClickListener(this);
+		resetBtn.setOnClickListener(this);
 		
 		new AsyncTask<Void, Integer, Void>() {
 
@@ -72,11 +75,10 @@ public class HistoryActivity extends Activity implements OnClickListener {
 			}
 
 			protected void onProgressUpdate(Integer... progressing){
-				//				progress.setProgress(progressing[0]);
+
 			}
 
 			protected void onPostExecute(Void result) {
-				// TODO Auto-generated method stub
 				super.onPostExecute(result);
 				
 				progress.setVisibility(View.INVISIBLE);
@@ -97,9 +99,11 @@ public class HistoryActivity extends Activity implements OnClickListener {
 			intent.setData(Uri.parse("https://docs.google.com/spreadsheet/ccc?key=0AhAUXFpCrNTedGYyS3FVV0ZhY1NYRGNPWVllNF9FbHc#gid=0"));
 			startActivity(intent);
 			break;
+		case R.id.history_btn_reset :
+			break;
 		}
 	}
-	
+		
 	public void detailViewGoogleDocs() throws AuthenticationException, MalformedURLException, IOException, ServiceException {
 
 		SpreadsheetService service = new SpreadsheetService("MySpreadsheetIntegration-v1");

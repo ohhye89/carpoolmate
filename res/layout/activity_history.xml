@@ -52,6 +52,15 @@
        android:layout_marginRight="30dp"
        android:text="@string/history_btn_detail" />
    
+   <Button 
+       android:id="@+id/history_btn_reset"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+	   android:layout_alignParentRight="true"
+	   android:layout_below="@+id/history_btn_detail"
+       android:layout_marginRight="30dp"
+       android:text="@string/history_btn_reset"/>
+   
    <ProgressBar 
        android:id="@+id/history_prg_loading"
        android:layout_width="fill_parent"
