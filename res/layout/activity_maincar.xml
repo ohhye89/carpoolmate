@@ -17,28 +17,32 @@
             android:id="@+id/marincar_txtView_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="6dip"
+            android:padding="3dip"
+            android:textSize="15sp"
             android:text="@string/maincar_txtView_num" />
         
         <TextView
             android:id="@+id/marincar_txtView_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="30dip"
+            android:padding="15dip"
+            android:textSize="15sp"
             android:text="@string/maincar_txtView_name" />
 
         <TextView
             android:id="@+id/marincar_txtView_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dip"
+            android:padding="5dip"
+            android:textSize="15sp"
             android:text="@string/maincar_txtView_count" />
 
         <TextView
             android:id="@+id/marincar_txtView_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dip"
+            android:padding="5dip"
+            android:textSize="15sp"
             android:text="@string/maincar_txtView_amount" />
         
     </TableRow>
