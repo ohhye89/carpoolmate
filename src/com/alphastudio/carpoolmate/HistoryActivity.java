@@ -8,6 +8,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -36,6 +37,8 @@ public class HistoryActivity extends Activity implements OnClickListener {
 	private Button detailBtn;
 	private Button resetBtn;
 	private Intent intent;
+	private SharedPreferences nickName;
+	private SharedPreferences.Editor nickEditor;
 
 	private String historyCount = "";
 	private String historyAmount = "";
@@ -57,6 +60,9 @@ public class HistoryActivity extends Activity implements OnClickListener {
 		progress = (ProgressBar)findViewById(R.id.history_prg_loading);
 		detailBtn = (Button)findViewById(R.id.history_btn_detail);
 		resetBtn = (Button)findViewById(R.id.history_btn_reset);
+		
+		nickName = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+	    nickEditor = nickName.edit();
 
 		detailBtn.setOnClickListener(this);
 		resetBtn.setOnClickListener(this);
@@ -77,6 +83,8 @@ public class HistoryActivity extends Activity implements OnClickListener {
 				historyTxtViewName.setVisibility(View.GONE);
 				historyTxtViewCount.setVisibility(View.GONE);
 				historyTxtViewAmount.setVisibility(View.GONE);
+				detailBtn.setVisibility(View.GONE);
+				resetBtn.setVisibility(View.GONE);
 			};
 
 			protected Void doInBackground(Void... params) {
@@ -96,15 +104,18 @@ public class HistoryActivity extends Activity implements OnClickListener {
 
 			protected void onPostExecute(Void result) {
 				super.onPostExecute(result);
+				String nick = nickName.getString("value", "");
 
 				progress.setVisibility(View.GONE);
 				historyTxtViewMonth.setVisibility(View.VISIBLE);
 				historyTxtViewName.setVisibility(View.VISIBLE);
 				historyTxtViewCount.setVisibility(View.VISIBLE);
 				historyTxtViewAmount.setVisibility(View.VISIBLE);
+				detailBtn.setVisibility(View.VISIBLE);
+				resetBtn.setVisibility(View.VISIBLE);
 
 				historyTxtViewMonth.setText( "[" + (cal.get(Calendar.MONTH)+1) + "월] CarPool 내역");
-				historyTxtViewName.setText( "- Mate : " + GoogleID.getID());
+				historyTxtViewName.setText( "- Mate : " + nick);
 				historyTxtViewCount.setText("- 이용 횟수 : " + historyCount + "번");
 				historyTxtViewAmount.setText("- 납부 금액 : " + Integer.parseInt(historyAmount) + "원");
 			}
@@ -129,6 +140,7 @@ public class HistoryActivity extends Activity implements OnClickListener {
 
 	public void detailViewGoogleDocs() throws AuthenticationException, MalformedURLException, IOException, ServiceException {
 
+		String nick = nickName.getString("value", "");
 		SpreadsheetService service = new SpreadsheetService("MySpreadsheetIntegration-v1");
 		service.setUserCredentials(MAINUSER, PASSWORD);
 		// Request URL Define. Never Change.
@@ -154,9 +166,9 @@ public class HistoryActivity extends Activity implements OnClickListener {
 
 		// Iterate through each row, printing its cell values.
 		ListEntry rowCount = listFeed.getEntries().get(31);
-		historyCount = rowCount.getCustomElements().getValue( GoogleID.getID() );
+		historyCount = rowCount.getCustomElements().getValue( nick );
 		ListEntry rowAmount = listFeed.getEntries().get(32);
-		historyAmount = rowAmount.getCustomElements().getValue( GoogleID.getID() );
+		historyAmount = rowAmount.getCustomElements().getValue( nick );
 	}
 
 }

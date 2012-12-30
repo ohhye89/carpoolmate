@@ -3,72 +3,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#558ED5" >
-    
+
     <TextView
-       android:id="@+id/history_txtview_month"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_marginLeft="20dp"
-       android:layout_marginTop="30dp"
-       android:textColor="@android:color/white"
-       android:textSize="30sp" />
-    
+        android:id="@+id/history_txtview_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
+
     <TextView
-       android:id="@+id/history_txtview_name"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_below="@+id/history_txtview_month"
-       android:layout_marginTop="15dp"
-       android:layout_marginLeft="20dp"
-       android:textColor="@android:color/white"
-       android:textSize="30sp" />
+        android:id="@+id/history_txtview_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/history_txtview_month"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
 
-   <TextView
-       android:id="@+id/history_txtview_count"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_below="@+id/history_txtview_name"
-       android:layout_marginLeft="20dp"
-       android:layout_marginTop="15dp"
-       android:textColor="@android:color/white"
-       android:textSize="30sp" />
+    <TextView
+        android:id="@+id/history_txtview_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/history_txtview_name"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
 
-   <TextView
-       android:id="@+id/history_txtview_total"
-       android:layout_width="fill_parent"
-       android:layout_height="wrap_content"
-       android:layout_below="@+id/history_txtview_count"
-       android:layout_marginLeft="20dp"
-       android:layout_marginTop="15dp"
-       android:textColor="@android:color/white"
-       android:textSize="30sp" />
+    <TextView
+        android:id="@+id/history_txtview_total"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/history_txtview_count"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
 
-   <Button
-       android:id="@+id/history_btn_detail"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignParentRight="true"
-       android:layout_marginTop="300dp"
-       android:layout_marginRight="30dp"
-       android:text="@string/history_btn_detail" />
-   
-   <Button 
-       android:id="@+id/history_btn_reset"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-	   android:layout_alignParentRight="true"
-	   android:layout_below="@+id/history_btn_detail"
-       android:layout_marginRight="30dp"
-       android:text="@string/history_btn_reset"/>
-   
-   <ProgressBar 
-       android:id="@+id/history_prg_loading"
-       android:layout_width="fill_parent"
-       android:layout_height="wrap_content"
-       android:max="100"
-       android:progress="10"
-       android:secondaryProgress="50"
-       android:layout_centerHorizontal="true"                 
-       android:layout_marginTop="100dp" />
+    <Button
+        android:id="@+id/history_btn_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="310dp"
+        android:background="@drawable/imgbtn2"
+        android:text="@string/history_btn_detail"
+        android:textColor="#000000"
+        android:textSize="15pt"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/history_btn_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/history_btn_detail"
+        android:layout_marginTop="310dp"
+        android:background="@drawable/imgbtn3"
+        android:text="@string/history_btn_reset"
+         android:textColor="#000000"
+        android:textSize="15pt"
+        android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/history_prg_loading"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:max="100"
+        android:progress="10"
+        android:secondaryProgress="50" />
 
 </RelativeLayout>
