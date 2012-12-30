@@ -5,8 +5,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     
-    <string name="login_radiobtn_car">차량주인</string>
-    <string name="login_radiobtn_mate">mate</string>
+    <string name="login_radiobtn_car">Owner</string>
+    <string name="login_radiobtn_mate">Mate</string>
     <string name="login_txt_id">Google Email</string>
     <string name="login_edittxt_id">아이디를 입력하세요</string>
     <string name="login_txt_password">Password</string>
@@ -21,5 +21,6 @@
     <string name="history_txtview_count">횟 수 : </string>
     <string name="history_btn_detail">자세히 보기</string>
     <string name="LoadingSuccess">로딩 완료</string>
+    <string name="history_btn_reset">갱신 하기</string>
 
 </resources>

@@ -8,6 +8,5 @@ public class GoogleID {
 	}
 	public static String getID() {
 		return googleID;
-		
 	}
 }
