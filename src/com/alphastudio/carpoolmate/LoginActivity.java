@@ -82,6 +82,7 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 			isMate = true;
 			break;
 		}
+		
 	}
 
 }
