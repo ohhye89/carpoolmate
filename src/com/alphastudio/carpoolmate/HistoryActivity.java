@@ -61,6 +61,12 @@ public class HistoryActivity extends Activity implements OnClickListener {
 		detailBtn.setOnClickListener(this);
 		resetBtn.setOnClickListener(this);
 		
+		
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
 		new AsyncTask<Void, Integer, Void>() {
 
 			protected Void doInBackground(Void... params) {

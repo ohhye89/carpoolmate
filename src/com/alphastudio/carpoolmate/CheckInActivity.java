@@ -70,6 +70,7 @@ public class CheckInActivity extends Activity implements OnClickListener {
 			.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
+					Calendar cal = Calendar.getInstance();
 					StringBuilder sb = new StringBuilder();
 					sb.append("CarPool Time...\n")
 					  .append(cal.get(Calendar.HOUR))
