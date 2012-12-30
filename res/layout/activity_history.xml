@@ -18,8 +18,8 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_below="@+id/history_txtview_month"
-       android:layout_marginLeft="20dp"
        android:layout_marginTop="15dp"
+       android:layout_marginLeft="20dp"
        android:textColor="@android:color/white"
        android:textSize="30sp" />
 

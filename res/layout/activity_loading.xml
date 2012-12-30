@@ -10,8 +10,8 @@
         android:layout_height="250dp"
         android:src="@drawable/carpoolmate_logo"
         android:id="@+id/login_image_logo"
-        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:contentDescription="@string/login_image_logo" />
         
 
