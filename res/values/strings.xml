@@ -27,6 +27,7 @@
     <string name="maincar_txtView_name">UserID</string>
     <string name="maincar_txtView_count">이용 횟수</string>
     <string name="maincar_txtView_amount">이용 금액</string>
+    <string name="maincar_btn_reset">갱신</string>
     
 
 </resources>

@@ -89,8 +89,7 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 				startActivity(intent);
 				overridePendingTransition(R.anim.fade, R.anim.hold);
 			}
-
-//		    idEditTxt.setText("");
+			// idEditTxt.setText("");
 			break;
 		case R.id.login_btn_find :
 			intent = new Intent(Intent.ACTION_VIEW);

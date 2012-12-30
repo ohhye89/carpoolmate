@@ -51,7 +51,7 @@ public class CheckInActivity extends Activity implements OnClickListener {
 	    sendBtn = (Button)findViewById(R.id.checkin_btn_send);
 	    
 	    nickName = getSharedPreferences("pref", Activity.MODE_PRIVATE);
-	    nickEditor = nickName.edit();
+	    // nickEditor = nickName.edit();
 	    
 	    sendBtn.setOnClickListener(this);
 	    

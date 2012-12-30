@@ -50,9 +50,11 @@ public final class R {
         public static final int login_radiobtn_mate=0x7f08000e;
         public static final int login_radiogroup=0x7f08000c;
         public static final int login_txt_id=0x7f08000f;
+        public static final int maincar_btn_reset=0x7f080017;
         public static final int maincar_prg_loading=0x7f080016;
         public static final int maincar_txtview_month=0x7f080014;
-        public static final int menu_settings=0x7f080017;
+        public static final int menu_logout=0x7f080019;
+        public static final int menu_settings=0x7f080018;
         public static final int tabhost=0x7f080013;
     }
     public static final class layout {
@@ -65,6 +67,7 @@ public final class R {
     }
     public static final class menu {
         public static final int activity_loading=0x7f070000;
+        public static final int activity_main_menu=0x7f070001;
     }
     public static final class string {
         public static final int LoadingSuccess=0x7f050010;
@@ -84,6 +87,7 @@ public final class R {
         public static final int login_radiobtn_mate=0x7f050004;
         public static final int login_txt_id=0x7f050005;
         public static final int login_txt_password=0x7f050007;
+        public static final int maincar_btn_reset=0x7f050016;
         public static final int maincar_txtView_amount=0x7f050015;
         public static final int maincar_txtView_count=0x7f050014;
         public static final int maincar_txtView_name=0x7f050013;

@@ -33,4 +33,13 @@
         android:progress="10"
         android:secondaryProgress="50" />
     
+    <Button 
+        android:id="@+id/maincar_btn_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/listView"
+        android:layout_centerHorizontal="true"
+        android:text="@string/maincar_btn_reset"
+        android:visibility="invisible"/>
+    
 </RelativeLayout>

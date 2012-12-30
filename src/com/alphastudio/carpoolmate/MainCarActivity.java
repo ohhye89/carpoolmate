@@ -13,7 +13,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,13 +29,14 @@ import com.google.gdata.data.spreadsheet.WorksheetEntry;
 import com.google.gdata.util.AuthenticationException;
 import com.google.gdata.util.ServiceException;
 
-public class MainCarActivity extends Activity {
+public class MainCarActivity extends Activity implements OnClickListener {
 	
 	private String MAINUSER = "ohej92@gmail.com";
 	private String PASSWORD = "carpoolmate";
 	
 	private TextView maincarTxtViewMonth;
 	private ProgressBar progress;
+	private Button maincarBtnReset;
 	
 	private ListView listView;
 	private ArrayList<String> list;
@@ -51,6 +54,9 @@ public class MainCarActivity extends Activity {
 	
 	    maincarTxtViewMonth = (TextView)findViewById(R.id.maincar_txtview_month);
 	    progress = (ProgressBar)findViewById(R.id.maincar_prg_loading);
+	    maincarBtnReset = (Button)findViewById(R.id.maincar_btn_reset);
+	    maincarBtnReset.setOnClickListener(this);
+	    
 	    listView = (ListView)findViewById(R.id.listView);
 	    list = new ArrayList<String>();
 
@@ -59,6 +65,24 @@ public class MainCarActivity extends Activity {
 	    listView.setDivider(new ColorDrawable(Color.BLUE));
 	    listView.setDividerHeight(2);
 		
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		refresh();
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch(v.getId()) {
+		case R.id.maincar_btn_reset :
+			maincarBtnReset.setVisibility(View.INVISIBLE);
+			list.clear();
+			refresh();
+		}
+	}
+	private void refresh() {
 		new AsyncTask<Void, Integer, Void>() {
 	
 			protected Void doInBackground(Void... params) {
@@ -98,6 +122,7 @@ public class MainCarActivity extends Activity {
 			    	adapter.notifyDataSetChanged();
 			    }
 				
+				maincarBtnReset.setVisibility(View.VISIBLE);
 				progress.setVisibility(View.INVISIBLE);
 				  
 				
