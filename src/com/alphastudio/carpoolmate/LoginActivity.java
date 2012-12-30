@@ -2,6 +2,7 @@ package com.alphastudio.carpoolmate;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,32 +11,53 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 public class LoginActivity extends Activity implements OnClickListener, RadioGroup.OnCheckedChangeListener {
 
 	private RadioGroup radioBtnGroup;
 	private EditText idEditTxt;
-	private EditText passwordEditTxt;
+	private TextView idTxt;
 	private Button loginBtn;
 	private Button findBtn;
 	private Intent intent;
 	private Boolean isMate = true;
+	private SharedPreferences nickName;
+	private SharedPreferences isLogIn;
+	private SharedPreferences.Editor nickEditor;
+	private SharedPreferences.Editor isLogInEditor;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_login);
 //	    startActivity(new Intent(this, LoadingActivity.class));
+	    nickName = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+	    isLogIn = getSharedPreferences("login", Activity.MODE_PRIVATE);
+	    nickEditor = nickName.edit();
+	    isLogInEditor = isLogIn.edit();
 	    
 	    radioBtnGroup = (RadioGroup)findViewById(R.id.login_radiogroup);
 	    idEditTxt = (EditText)findViewById(R.id.login_edittxt_id);
-	    passwordEditTxt = (EditText)findViewById(R.id.login_edittxt_password);
+	    idTxt = (TextView)findViewById(R.id.login_txt_id);
 	    loginBtn = (Button)findViewById(R.id.login_btn_login);
 	    findBtn = (Button)findViewById(R.id.login_btn_find);
-	    
 	    radioBtnGroup.setOnCheckedChangeListener(this);
 	    loginBtn.setOnClickListener(this);
 	    findBtn.setOnClickListener(this);
+	    
+	    Boolean islog = isLogIn.getBoolean("login", false);
+	    
+	    if(isMate && islog) {
+			intent = new Intent(LoginActivity.this, MainActivity.class);
+			startActivity(intent);
+			overridePendingTransition(R.anim.fade, R.anim.hold);
+		}
+		else if(!isMate){
+			intent = new Intent(LoginActivity.this, MainCarActivity.class);
+			startActivity(intent);
+			overridePendingTransition(R.anim.fade, R.anim.hold);
+		}
 	}
 	
 	@Override
@@ -51,7 +73,12 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 		switch(v.getId())
 		{
 		case R.id.login_btn_login :
-			GoogleID.setID(idEditTxt.getText().toString());
+			String nick = idEditTxt.getText().toString();
+			nickEditor.putString("value", nick);
+			isLogInEditor.putBoolean("login", true);
+			nickEditor.commit();
+			isLogInEditor.commit();
+			
 			if(isMate) {
 				intent = new Intent(LoginActivity.this, MainActivity.class);
 				startActivity(intent);
@@ -63,8 +90,7 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 				overridePendingTransition(R.anim.fade, R.anim.hold);
 			}
 
-		    idEditTxt.setText("");
-		    passwordEditTxt.setText("");
+//		    idEditTxt.setText("");
 			break;
 		case R.id.login_btn_find :
 			intent = new Intent(Intent.ACTION_VIEW);
@@ -79,13 +105,16 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 		switch(checkedId) {
 		case R.id.login_radiobtn_car :
 			isMate = false;
+			idEditTxt.setVisibility(View.GONE);
+			idTxt.setVisibility(View.GONE);
 			break;
 			
 		case R.id.login_radiobtn_mate :
 			isMate = true;
+			idEditTxt.setVisibility(View.VISIBLE);
+			idTxt.setVisibility(View.VISIBLE);
 			break;
 		}
 		
 	}
-
 }
