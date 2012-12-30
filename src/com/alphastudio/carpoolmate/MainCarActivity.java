@@ -78,6 +78,7 @@ public class MainCarActivity extends Activity implements OnClickListener {
 		switch(v.getId()) {
 		case R.id.maincar_btn_reset :
 			maincarBtnReset.setVisibility(View.INVISIBLE);
+			progress.setVisibility(View.VISIBLE);
 			list.clear();
 			refresh();
 		}
