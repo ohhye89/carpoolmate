@@ -7,12 +7,12 @@
     
     <string name="login_radiobtn_car">Owner</string>
     <string name="login_radiobtn_mate">Mate</string>
-    <string name="login_txt_id">Google Email</string>
-    <string name="login_edittxt_id">아이디를 입력하세요</string>
+    <string name="login_txt_id">NickName</string>
+    <string name="login_edittxt_id">닉네임을 입력하세요</string>
     <string name="login_txt_password">Password</string>
     <string name="login_edittxt_password">비밀번호를 입력하세요</string>
-    <string name="login_btn_login">로그인</string>
-    <string name="login_btn_find">ID/Password 찾기</string>
+    <string name="login_btn_login">시작</string>
+    <string name="login_btn_find">ID 찾기</string>
     <string name="login_image_logo">로고</string>
     
     <string name="checkin_btn_send">전송하기</string>

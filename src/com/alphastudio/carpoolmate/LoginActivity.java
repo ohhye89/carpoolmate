@@ -15,7 +15,7 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 
 	private RadioGroup radioBtnGroup;
 	private EditText idEditTxt;
-	private EditText passwordEditTxt;
+//	private EditText passwordEditTxt;
 	private Button loginBtn;
 	private Button findBtn;
 	private Intent intent;
@@ -29,7 +29,8 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 	    
 	    radioBtnGroup = (RadioGroup)findViewById(R.id.login_radiogroup);
 	    idEditTxt = (EditText)findViewById(R.id.login_edittxt_id);
-	    passwordEditTxt = (EditText)findViewById(R.id.login_edittxt_password);
+	    idEditTxt.setText("ohhye89");
+//	    passwordEditTxt = (EditText)findViewById(R.id.login_edittxt_password);
 	    loginBtn = (Button)findViewById(R.id.login_btn_login);
 	    findBtn = (Button)findViewById(R.id.login_btn_find);
 	    
@@ -64,7 +65,7 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 			}
 
 		    idEditTxt.setText("");
-		    passwordEditTxt.setText("");
+//		    passwordEditTxt.setText("");
 			break;
 		case R.id.login_btn_find :
 			intent = new Intent(Intent.ACTION_VIEW);
