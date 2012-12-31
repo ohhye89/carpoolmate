@@ -18,7 +18,6 @@ public class LoadingActivity extends Activity {
         Handler h = new Handler() {
 
         	public void handleMessage(Message msg) {
-        		Log.e("TAG", "TEST LOGGGGGG");
         		finish();
         	}
         };
