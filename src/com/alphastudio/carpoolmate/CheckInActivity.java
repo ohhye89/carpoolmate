@@ -9,9 +9,13 @@ import java.util.List;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -34,7 +38,10 @@ public class CheckInActivity extends Activity implements OnClickListener {
 	private Button sendBtn;
 	
 	private SharedPreferences nickName;
+	private SharedPreferences isLogIn;
 	private SharedPreferences.Editor nickEditor;
+	private SharedPreferences.Editor isLogInEditor;
+	
 		
 	String MAINUSER = "ohej92@gmail.com";
 	String PASSWORD = "carpoolmate";
@@ -64,6 +71,38 @@ public class CheckInActivity extends Activity implements OnClickListener {
 		  .append(cal.get(Calendar.DATE));
 		checkInTxtViewDate.setText(sb.toString());
 		
+	}
+	
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()) {
+		case R.id.menu_logout :
+			nickName = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+			isLogIn = getSharedPreferences("login", Activity.MODE_PRIVATE);
+			
+			nickEditor = nickName.edit();
+		    isLogInEditor = isLogIn.edit();
+		    
+			nickEditor.remove("pref");
+			nickEditor.commit();
+			isLogInEditor.remove("login");
+			isLogInEditor.commit();
+			
+			isLogIn.getBoolean("login", false);
+			Intent intent = new Intent(CheckInActivity.this, LoginActivity.class);
+			startActivity(intent);
+			overridePendingTransition(R.anim.fade, R.anim.hold);
+			finish();
+			break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 	
 	@Override

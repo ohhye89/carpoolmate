@@ -12,6 +12,9 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -37,8 +40,12 @@ public class HistoryActivity extends Activity implements OnClickListener {
 	private Button detailBtn;
 	private Button resetBtn;
 	private Intent intent;
+
 	private SharedPreferences nickName;
+	private SharedPreferences isLogIn;
 	private SharedPreferences.Editor nickEditor;
+	private SharedPreferences.Editor isLogInEditor;
+	
 
 	private String historyCount = "";
 	private String historyAmount = "";
@@ -121,7 +128,39 @@ public class HistoryActivity extends Activity implements OnClickListener {
 			}
 		}.execute();
 	}
-
+	
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()) {
+		case R.id.menu_logout :
+			nickName = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+			isLogIn = getSharedPreferences("login", Activity.MODE_PRIVATE);
+			
+			nickEditor = nickName.edit();
+		    isLogInEditor = isLogIn.edit();
+		    
+			nickEditor.remove("pref");
+			nickEditor.commit();
+			isLogInEditor.remove("login");
+			isLogInEditor.commit();
+			
+			isLogIn.getBoolean("login", false);
+			Intent intent = new Intent(HistoryActivity.this, LoginActivity.class);
+			startActivity(intent);
+			overridePendingTransition(R.anim.fade, R.anim.hold);
+			finish();
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
 	@Override
 	public void onClick(View v) {
 		switch(v.getId())

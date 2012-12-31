@@ -52,6 +52,7 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 			intent = new Intent(LoginActivity.this, MainActivity.class);
 			startActivity(intent);
 			overridePendingTransition(R.anim.fade, R.anim.hold);
+			finish();
 		}
 		else if(!isMate){
 			intent = new Intent(LoginActivity.this, MainCarActivity.class);
@@ -83,6 +84,7 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 				intent = new Intent(LoginActivity.this, MainActivity.class);
 				startActivity(intent);
 				overridePendingTransition(R.anim.fade, R.anim.hold);
+				finish();
 			}
 			else {
 				intent = new Intent(LoginActivity.this, MainCarActivity.class);

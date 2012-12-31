@@ -17,11 +17,6 @@ import android.widget.TabHost;
 public class MainActivity extends ActivityGroup implements OnClickListener {
 	private TabHost mTabHost;
 		
-	private SharedPreferences nickName;
-	private SharedPreferences isLogIn;
-	private SharedPreferences.Editor nickEditor;
-	private SharedPreferences.Editor isLogInEditor;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,36 +35,6 @@ public class MainActivity extends ActivityGroup implements OnClickListener {
 		mTabHost.addTab(mTabHost.newTabSpec("tab_history")
 		        .setIndicator("History", historyIcon)
 		        .setContent(new Intent(this, HistoryActivity.class)));
-	}
-	
-	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch(item.getItemId()) {
-		case R.id.menu_logout :
-			nickName = getSharedPreferences("pref", Activity.MODE_PRIVATE);
-			isLogIn = getSharedPreferences("login", Activity.MODE_PRIVATE);
-			
-			nickEditor = nickName.edit();
-		    isLogInEditor = isLogIn.edit();
-		    
-			nickEditor.remove("pref");
-			nickEditor.commit();
-			isLogInEditor.remove("login");
-			isLogInEditor.commit();
-			
-			Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-			startActivity(intent);
-			overridePendingTransition(R.anim.fade, R.anim.hold);
-			break;
-		}
-		return super.onOptionsItemSelected(item);
 	}
 
 	@Override

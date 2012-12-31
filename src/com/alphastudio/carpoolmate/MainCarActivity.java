@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
@@ -64,7 +65,6 @@ public class MainCarActivity extends Activity implements OnClickListener {
 	    listView.setAdapter(adapter);
 	    listView.setDivider(new ColorDrawable(Color.BLUE));
 	    listView.setDividerHeight(2);
-		
 	}
 	
 	@Override
