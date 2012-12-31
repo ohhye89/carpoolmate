@@ -22,6 +22,7 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 	private Button findBtn;
 	private Intent intent;
 	private Boolean isMate = true;
+	private Boolean isLog = false;
 	private SharedPreferences nickName;
 	private SharedPreferences isLogIn;
 	private SharedPreferences.Editor nickEditor;
@@ -31,7 +32,7 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		startActivity(new Intent(this, LoadingActivity.class));
+		// startActivity(new Intent(this, LoadingActivity.class));
 		nickName = getSharedPreferences("pref", Activity.MODE_PRIVATE);
 		isLogIn = getSharedPreferences("login", Activity.MODE_PRIVATE);
 		nickEditor = nickName.edit();
@@ -46,18 +47,13 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 		loginBtn.setOnClickListener(this);
 		findBtn.setOnClickListener(this);
 
-		Boolean islog = isLogIn.getBoolean("login", false);
+		isLog = isLogIn.getBoolean("login", false);
 
-		if(isMate && islog) {
+		if(isLog) {
 			intent = new Intent(LoginActivity.this, MainActivity.class);
 			startActivity(intent);
 			overridePendingTransition(R.anim.fade, R.anim.hold);
 			finish();
-		}
-		else if(!isMate){
-			intent = new Intent(LoginActivity.this, MainCarActivity.class);
-			startActivity(intent);
-			overridePendingTransition(R.anim.fade, R.anim.hold);
 		}
 	}
 
@@ -74,13 +70,13 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 		switch(v.getId())
 		{
 		case R.id.login_btn_login :
-			String nick = idEditTxt.getText().toString();
-			nickEditor.putString("value", nick);
-			isLogInEditor.putBoolean("login", true);
-			nickEditor.commit();
-			isLogInEditor.commit();
-
 			if(isMate) {
+				String nick = idEditTxt.getText().toString();
+				nickEditor.putString("value", nick);
+				isLogInEditor.putBoolean("login", true);
+				nickEditor.commit();
+				isLogInEditor.commit();
+				
 				intent = new Intent(LoginActivity.this, MainActivity.class);
 				startActivity(intent);
 				overridePendingTransition(R.anim.fade, R.anim.hold);
@@ -92,6 +88,7 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 				overridePendingTransition(R.anim.fade, R.anim.hold);
 			}
 			break;
+			
 		case R.id.login_btn_find :
 			intent = new Intent(Intent.ACTION_VIEW);
 			intent.setData(Uri.parse("https://www.google.com/accounts/recovery"));
