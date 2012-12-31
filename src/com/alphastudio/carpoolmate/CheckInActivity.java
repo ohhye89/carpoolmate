@@ -56,7 +56,7 @@ public class CheckInActivity extends Activity implements OnClickListener {
 	    sendBtn.setOnClickListener(this);
 	    
 	    StringBuilder sb = new StringBuilder();
-		sb.append("Today...\n")
+		sb.append("Today is..\n")
 		  .append(cal.get(Calendar.YEAR))
 		  .append(".")
 		  .append(cal.get(Calendar.MONTH)+1)
@@ -79,7 +79,7 @@ public class CheckInActivity extends Activity implements OnClickListener {
 				public void onClick(DialogInterface dialog, int which) {
 					Calendar cal = Calendar.getInstance();
 					StringBuilder sb = new StringBuilder();
-					sb.append("탑승시간은..\n")
+					sb.append("방금 탑승시간은,\n")
 					  .append(cal.get(Calendar.HOUR))
 					  .append("시 ")
 					  .append(cal.get(Calendar.MINUTE))

@@ -7,19 +7,20 @@
     android:orientation="vertical" >
 
     <TextView
-       android:id="@+id/maincar_txtview_month"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_centerHorizontal="true"
-       android:layout_marginTop="30dp"
-       android:textColor="@android:color/white"
-       android:textSize="30sp" />
-    
+        android:id="@+id/maincar_txtview_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
+
     <ListView
         android:id="@+id/listView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/maincar_txtview_month"
+        android:layout_marginTop="35dp"
         android:transcriptMode="alwaysScroll" />
 
     <ProgressBar
@@ -32,14 +33,19 @@
         android:max="100"
         android:progress="10"
         android:secondaryProgress="50" />
-    
-    <Button 
+
+    <Button
         android:id="@+id/maincar_btn_reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/listView"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/imgbtn1"
         android:text="@string/maincar_btn_reset"
-        android:visibility="invisible"/>
-    
+        android:textColor="#000000"
+        android:textSize="15pt"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
 </RelativeLayout>

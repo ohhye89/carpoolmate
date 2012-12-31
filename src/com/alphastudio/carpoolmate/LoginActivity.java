@@ -26,29 +26,29 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 	private SharedPreferences isLogIn;
 	private SharedPreferences.Editor nickEditor;
 	private SharedPreferences.Editor isLogInEditor;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.activity_login);
-//	    startActivity(new Intent(this, LoadingActivity.class));
-	    nickName = getSharedPreferences("pref", Activity.MODE_PRIVATE);
-	    isLogIn = getSharedPreferences("login", Activity.MODE_PRIVATE);
-	    nickEditor = nickName.edit();
-	    isLogInEditor = isLogIn.edit();
-	    
-	    radioBtnGroup = (RadioGroup)findViewById(R.id.login_radiogroup);
-	    idEditTxt = (EditText)findViewById(R.id.login_edittxt_id);
-	    idTxt = (TextView)findViewById(R.id.login_txt_id);
-	    loginBtn = (Button)findViewById(R.id.login_btn_login);
-	    findBtn = (Button)findViewById(R.id.login_btn_find);
-	    radioBtnGroup.setOnCheckedChangeListener(this);
-	    loginBtn.setOnClickListener(this);
-	    findBtn.setOnClickListener(this);
-	    
-	    Boolean islog = isLogIn.getBoolean("login", false);
-	    
-	    if(isMate && islog) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_login);
+		startActivity(new Intent(this, LoadingActivity.class));
+		nickName = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+		isLogIn = getSharedPreferences("login", Activity.MODE_PRIVATE);
+		nickEditor = nickName.edit();
+		isLogInEditor = isLogIn.edit();
+
+		radioBtnGroup = (RadioGroup)findViewById(R.id.login_radiogroup);
+		idEditTxt = (EditText)findViewById(R.id.login_edittxt_id);
+		idTxt = (TextView)findViewById(R.id.login_txt_id);
+		loginBtn = (Button)findViewById(R.id.login_btn_login);
+		findBtn = (Button)findViewById(R.id.login_btn_find);
+		radioBtnGroup.setOnCheckedChangeListener(this);
+		loginBtn.setOnClickListener(this);
+		findBtn.setOnClickListener(this);
+
+		Boolean islog = isLogIn.getBoolean("login", false);
+
+		if(isMate && islog) {
 			intent = new Intent(LoginActivity.this, MainActivity.class);
 			startActivity(intent);
 			overridePendingTransition(R.anim.fade, R.anim.hold);
@@ -59,13 +59,13 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 			overridePendingTransition(R.anim.fade, R.anim.hold);
 		}
 	}
-	
+
 	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_loading, menu);
-        return true;
-    }
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.activity_loading, menu);
+		return true;
+	}
 
 	@Override
 	public void onClick(View v) {
@@ -78,7 +78,7 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 			isLogInEditor.putBoolean("login", true);
 			nickEditor.commit();
 			isLogInEditor.commit();
-			
+
 			if(isMate) {
 				intent = new Intent(LoginActivity.this, MainActivity.class);
 				startActivity(intent);
@@ -89,7 +89,6 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 				startActivity(intent);
 				overridePendingTransition(R.anim.fade, R.anim.hold);
 			}
-			// idEditTxt.setText("");
 			break;
 		case R.id.login_btn_find :
 			intent = new Intent(Intent.ACTION_VIEW);
@@ -107,13 +106,13 @@ public class LoginActivity extends Activity implements OnClickListener, RadioGro
 			idEditTxt.setVisibility(View.GONE);
 			idTxt.setVisibility(View.GONE);
 			break;
-			
+
 		case R.id.login_radiobtn_mate :
 			isMate = true;
 			idEditTxt.setVisibility(View.VISIBLE);
 			idTxt.setVisibility(View.VISIBLE);
 			break;
 		}
-		
+
 	}
 }
